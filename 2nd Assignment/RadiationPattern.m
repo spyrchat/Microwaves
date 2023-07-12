@@ -106,17 +106,17 @@ elseif n == 0 && solid == true
    Dir = Directivity(Etotal,theta,phi);
    fprintf('The Directivity Calculated using the Riemann Approximation is: %f\n', Dir)
 
-   % E=@(phi,theta) 1/(max(max(abs(Etotal)))) * (cos(pi/2*cos(theta))./sin(theta)).*abs(2*cos(7/2 .* k .*d.*cos(phi).*sin(theta)) + 2*cos(5/2 .*k *d.*cos(phi).*sin(theta)) + 2*cos(3/2 .*k .*d.*cos(phi).*sin(theta)) + 2*cos(1/2 .*k *d.*cos(phi).*sin(theta)));
-   % x=@(phi,theta) E(phi,theta).*cos(phi).*sin(theta);
-   % y=@(phi,theta) E(phi,theta).*sin(phi).*sin(theta);
-   % z=@(phi,theta) E(phi,theta).*cos(theta);
-   % fsurf(x,y,z,[0 2*pi 0 pi]);
-   % colorbar;
-   % title(['3D Radiation pattern for d = ', num2str(d/lambda),'λ']);
-   % subtitle(['All Currents have the same direction']);
-   % xlabel('X');
-   % ylabel('Y');
-   % zlabel('Z');
+   E=@(phi,theta) 1/(max(max(abs(Etotal)))) * (cos(pi/2*cos(theta))./sin(theta)).*abs(2*cos(7/2 .* k .*d.*cos(phi).*sin(theta)) + 2*cos(5/2 .*k *d.*cos(phi).*sin(theta)) + 2*cos(3/2 .*k .*d.*cos(phi).*sin(theta)) + 2*cos(1/2 .*k *d.*cos(phi).*sin(theta)));
+   x=@(phi,theta) E(phi,theta).*cos(phi).*sin(theta);
+   y=@(phi,theta) E(phi,theta).*sin(phi).*sin(theta);
+   z=@(phi,theta) E(phi,theta).*cos(theta);
+   fsurf(x,y,z,[0 2*pi 0 pi]);
+   colorbar;
+   title(['3D Radiation pattern for d = ', num2str(d/lambda),'λ']);
+   subtitle(['All Currents have the same direction']);
+   xlabel('X');
+   ylabel('Y');
+   zlabel('Z');
 
 
 %----------------------------------------------------------------------------------------------------------%
@@ -146,15 +146,15 @@ elseif n == 1 && solid == true
    
    fprintf('The Directivity Calculated using the Riemann Approximation is: %f\n', D)
     
-   % % E=@(phi,theta) 1/(max(max(abs(Etotal)))) * (cos(pi/2*cos(theta))./sin(theta)).*abs(2j*sin(7/2 .* k .*d.*cos(phi).*sin(theta)) - 2j*sin(5/2 *k *d.*cos(phi).*sin(theta)) + 2j*sin(3/2 .*k .*d.*cos(phi).*sin(theta)) - 2j*sin(1/2 .*k *d.*cos(phi).*sin(theta)));
-   % % x=@(phi,theta) E(phi,theta).*cos(phi).*sin(theta);
-   % % y=@(phi,theta) E(phi,theta).*sin(phi).*sin(theta);
-   % % z=@(phi,theta) E(phi,theta).*cos(theta);
-   % % fsurf(x,y,z,[0 2*pi 0 pi]);
-   % % colorbar;
-   % % title(['3D Radiation pattern for d = ', num2str(d/lambda),'λ']);
-   % % subtitle(['Alternating Currents']);
-   % % xlabel('X');
-   % % ylabel('Y');
-   % % zlabel('Z');
+   E=@(phi,theta) 1/(max(max(abs(Etotal)))) * (cos(pi/2*cos(theta))./sin(theta)).*abs(2j*sin(7/2 .* k .*d.*cos(phi).*sin(theta)) - 2j*sin(5/2 *k *d.*cos(phi).*sin(theta)) + 2j*sin(3/2 .*k .*d.*cos(phi).*sin(theta)) - 2j*sin(1/2 .*k *d.*cos(phi).*sin(theta)));
+   x=@(phi,theta) E(phi,theta).*cos(phi).*sin(theta);
+   y=@(phi,theta) E(phi,theta).*sin(phi).*sin(theta);
+   z=@(phi,theta) E(phi,theta).*cos(theta);
+   fsurf(x,y,z,[0 2*pi 0 pi]);
+   colorbar;
+   title(['3D Radiation pattern for d = ', num2str(d/lambda),'λ']);
+   subtitle(['Alternating Currents']);
+   xlabel('X');
+   ylabel('Y');
+   zlabel('Z');
 end
